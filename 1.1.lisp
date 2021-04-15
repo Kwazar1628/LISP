@@ -87,3 +87,26 @@
 ;((((4) 3) 2) 1) 
 ;(1) 
 ;NIL 
+--------------------------------
+
+
+#КР
+;В заданном списке найти самый длинный подсписок
+(defun check-list (lst)
+    ((lambda (max_length)
+    
+    	(mapcan #'(lambda (sub-lst) 
+    	(when (eq (length sub-lst) max_length) (list sub-lst))) lst))
+         (apply 'max (mapcar 'length lst)))
+)
+
+(print (check-list '(())))
+(print (check-list '((5))))
+(print (check-list '((5) () (1 2) (4) (21 2))))
+
+;Ответ:
+;(NIL) 
+;((5)) 
+;((1 2) (21 2)) 
+;((1 2 3)) 
+(print (check-list '((5) () (1 2) (4) (21 2) (1 2 3))))
